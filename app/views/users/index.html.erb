@@ -1,0 +1,56 @@
+<div class="container col-md-12">
+  
+  
+  
+  <h2>Uživatelé</h2>
+  <br>
+  <p>Přehled všech uživatelů v systému :</p>
+  <br>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Jméno</th>
+        <th class="hidden-sm hidden-xs">Registrace</th>
+        <th class="hidden-xs">Email</th>
+        <!--<th class="hidden-sm hidden-xs">Potvrzeno</th>-->
+        <th>Role</th>
+        
+        <th>Status</th>
+        <th class="hidden-xs">Přihlášen</th>
+        <th>Links</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for user in @users %>
+        <tr>
+          <td><%= user.first_name + ' ' + user.last_name %></td>
+          <td class="hidden-sm hidden-xs">před <%= time_ago_in_words(user.created_at) %></td>
+          <td class="hidden-xs"><%= user.email %></td>
+          <!-- TODO strftime is nil! -->
+          <!--<td class="hidden-sm hidden-xs"><%#= Date.parse(user.confirmed_at).strftime("%d.%m v %l:%Mh") %></td>-->
+          <td><%= t(user.role) %></td>
+          
+          <td><%= t(user.status) %></td>
+          <td class="hidden-xs"><%= user.sign_in_count %>x</td>
+          <td>
+              
+          <%= link_to edit_user_path(user), :class => "table-link" do %>
+			    	<span class="fa-stack">
+			    		<i class="fa fa-square fa-stack-2x"></i>
+			    		<i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+			    	</span>
+			    <% end %>
+			    
+			    <%= link_to user_path(user), :class => "table-link" do %>
+			    	<span class="fa-stack">
+			    		<i class="fa fa-square fa-stack-2x"></i>
+			    		<i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+			    	</span>
+			    <% end %>
+			    			  		
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

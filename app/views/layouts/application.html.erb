@@ -7,13 +7,14 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="<%= controller_name %> <%= action_name%>">
   <%= render 'layouts/header' %>
-  
-  <div class="row">
-    <% flash.each do |name, msg| %>
-      <%= content_tag(:div, msg, class:"alert alert-#{name}") %>
-    <% end %>
+  <div class="container-layout">
+    <div class="row">
+      <% flash.each do |name, msg| %>
+        <%= content_tag(:div, msg, class:"alert alert-#{name}") %>
+      <% end %>
+    </div>
   </div>
   
   <%= yield %>

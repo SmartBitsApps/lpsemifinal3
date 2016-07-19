@@ -13,3 +13,12 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+/* My custom scss */
+@import "devise-views";
+
+/* Padding for every page with nav panel */
+.container-layout {
+  margin-top: 7rem;
+}
